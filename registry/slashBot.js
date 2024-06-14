@@ -82,6 +82,7 @@ module.exports = new u.cmd()
   .addSubcommand(pulse)
   .addSubcommand(reload)
   .addSubcommand(getid)
+  .addSubcommand(activity)
   .setDMPermission(false)
   .setDefaultMemberPermissions(0)
   .toJSON();
