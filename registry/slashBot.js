@@ -50,6 +50,29 @@ const getid = new u.sub()
       .setRequired(false)
   );
 
+const activity = new u.sub()
+  .setName("activity")
+  .setDescription("Set the bot's activity.")
+  .addStringOption(
+    new u.string()
+        .setName("type")
+        .setDescription("The type of activity.")
+        .setChoices([
+            { name: "Competing", value: "5" },
+            { name: "Custon", value: "4" },
+            { name: "Listening", value: "2" },
+            { name: "Playing", value: "0" },
+            { name: "Streaming", value: "1" },
+            { name: "Watching", value: "3" },
+        ])
+        .setRequired(true)
+  )
+  .addStringOption(
+    new u.string()
+        .setName("activity")
+        .setDescription("The activity to play.")
+        .setRequired(true)
+  )
 module.exports = new u.cmd()
   .setName("bot")
   .setDescription("Control the bot! Some actions are limited based on role.")
