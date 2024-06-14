@@ -64,6 +64,7 @@ async function goToBed(int) {
     u.errorHandler(error, int);
   }
 }
+
 /**
  * @param {Augur.GuildInteraction<"CommandSlash">} int
  * @param {Discord.InteractionResponse} msg
@@ -72,6 +73,7 @@ async function ping(int, msg) {
   const sent = await int.editReply("Pinging...");
   return int.editReply(`Pong! Took ${sent.createdTimestamp - msg.createdTimestamp}ms`);
 }
+
 /** @param {Augur.GuildInteraction<"CommandSlash">} int*/
 async function pull(int) {
   const spawn = require("child_process").spawn;
@@ -94,6 +96,7 @@ async function pull(int) {
     }
   });
 }
+
 /** @param {Augur.GuildInteraction<"CommandSlash">} int*/
 async function pulse(int) {
   const client = int.client;
@@ -110,6 +113,7 @@ async function pulse(int) {
     ]);
   return int.editReply({ embeds: [embed] });
 }
+
 /** @param {Augur.GuildInteraction<"CommandSlash">} int*/
 async function reload(int) {
   const fs = require("fs"),
@@ -127,6 +131,7 @@ async function reload(int) {
   }
   return int.editReply("Reloaded!");
 }
+
 /** @param {Augur.GuildInteraction<"CommandSlash">} int*/
 async function getId(int) {
   const mentionable = int.options.getMentionable("mentionable");
@@ -141,6 +146,14 @@ async function getId(int) {
     for (const e of emojis) results.push({ str: e, id: `\\${e}` });
   }
   return int.editReply(`I got the following results:\n${results.map(r => `${r.str}: ${r.id}`).join("\n")}`);
+}
+
+/** @param {Augur.GuildInteraction<"CommandSlash">} int*/
+async function setActivity(int) {
+  const type = int.options.getString("type", true)
+  const activity = int.options.getString("activity", true)
+  int.client.user.setActivity(activity, { type: parseInt(type) });
+  return int.reply({ content: `Activity set to \`${Discord.ActivityType[parseInt(type)]} ${activity}\``, ephemeral: true })
 }
 
 const Module = new Augur.Module()
@@ -162,6 +175,7 @@ const Module = new Augur.Module()
       case "pulse": return pulse(int);
       case "reload": return reload(int);
       case "getid": return getId(int);
+      case "activity": return setActivity(int);
     }
   },
   autocomplete: (int) => {
