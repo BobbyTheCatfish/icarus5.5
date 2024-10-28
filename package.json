@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/BobbyTheCatfish/icarus5.5#readme",
   "dependencies": {
+    "@twurple/api": "^7.2.0",
+    "@twurple/auth": "^7.2.0",
     "@types/steamapi": "^2.2.5",
     "augurbot-ts": "^3.2.2",
     "axios": "^1.6.7",
