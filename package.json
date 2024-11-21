@@ -22,7 +22,7 @@
     "@types/steamapi": "^2.2.5",
     "augurbot-ts": "^3.2.2",
     "axios": "^1.6.7",
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.15.2",
     "forever": "^4.0.1",
     "google-auth-library": "^9.14.1",
     "google-spreadsheet": "^4.1.4",
