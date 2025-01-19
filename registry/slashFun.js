@@ -49,18 +49,18 @@ const choose = new u.sub()
 
 const emoji = new u.sub()
   .setName("emoji")
-  .setDescription("Combines two (non-custom) emoji")
+  .setDescription("Enlarges an emoji or combines two")
   .addStringOption(
     new u.string()
       .setName("emoji1")
-      .setDescription("First emoji to combine")
+      .setDescription("Emoji to enlarge or combine")
       .setRequired(true)
   )
   .addStringOption(
     new u.string()
       .setName("emoji2")
       .setDescription("Second emoji to combine")
-      .setRequired(true)
+      .setRequired(false)
   );
 
 const repost = new u.sub()
